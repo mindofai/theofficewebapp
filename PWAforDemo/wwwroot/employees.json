@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "image" : "/david.png",
+    "name": "David Wallace",
+    "position": "CEO",
+    "startDate": "2001-02-27T00:00:00",
+    "email": "dwallace@theoffice.com"
+  },
+  {
+    "id": "2",
+    "image": "/michael.png",
+    "name": "Michael Scott",
+    "position": "Regional Manager",
+    "startDate": "2012-11-25T00:00:00",
+    "email": "littlekidlover@theoffice.com"
+  },
+  {
+    "id": "3",
+    "image": "/dwight.png",
+    "name": "Dwight Schrute",
+    "position": "Assistant Regional Manager",
+    "startDate": "2018-01-05T00:00:00",
+    "email": "schrutefarms@theoffice.com"
+  },
+  {
+    "id": "4",
+    "image": "/pam.png",
+    "name": "Pam Beesly",
+    "position": "Receptionist",
+    "startDate": "2016-02-05T00:00:00",
+    "email": "pampam@theoffice.com"
+  }
+]

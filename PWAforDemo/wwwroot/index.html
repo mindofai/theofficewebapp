@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MS Tech Sample App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/lib/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/lib/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/lib/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+    <div id="demo" class="limiter">
+        <h1>Material Design Responsive Table</h1>
+        <h2>Table of my other Material Design works (list was updated 08.2015)</h2>
+
+        <div class="table-responsive-vertical shadow-z-1">
+            <table id="tableContainer" class="table table-hover table-mc-light-blue table-striped table-hover">
+            </table>
+        </div>
+
+
+        <!--===============================================================================================-->
+        <script src="/lib/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="/lib/bootstrap/js/popper.js"></script>
+        <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="/lib/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script>
+            $('.js-pscroll').each(function () {
+                var ps = new PerfectScrollbar(this);
+
+                $(window).on('resize', function () {
+                    ps.update();
+                })
+
+                $(this).on('ps-x-reach-start', function () {
+                    $(this).parent().find('.table100-firstcol').removeClass('shadow-table100-firstcol');
+                });
+
+                $(this).on('ps-scroll-x', function () {
+                    $(this).parent().find('.table100-firstcol').addClass('shadow-table100-firstcol');
+                });
+
+            });
+
+
+            $(document).ready(function () {
+
+                var response = [];
+
+                $.getJSON("/employees.json", function (json) {
+                    response = json;
+                    var table = $("<table><thead><tr ><th>ID</th><th>Name</th></tr ></thead >");
+
+                    for (var i = 0; i < response.length; i++) {
+
+                        var row = $("<tbody><tr><td data-title='name'>" + response[i].name + "</td><td data-title='position'>" + response[i].position + "</td><td data-title='Link'><a id='"+ response[i].id +"' href='#'>Know More</a></td></tr>");
+                            table.append(row);
+                    }
+                    table.append("</tbody ></table >");
+
+                    table.appendTo($("#tableContainer"));
+                });
+
+                $(document).on("click", function (e) {
+                    var str = e.target.id;
+                    var Row = document.getElementById(str);
+                    localStorage.setItem("id", str);
+                    window.location.href = 'display.html';
+                });
+
+            });
+
+        </script>
+        <!--===============================================================================================-->
+        <script src="/js/main.js"></script>
+        <style>
+            body{
+                color:black;
+            }
+        </style>
+
+</body>
+</html>
